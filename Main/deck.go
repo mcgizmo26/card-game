@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"strings"
+	"time"
 )
 
 // The parenthesis before the function is called a "reciever". It is essentially
@@ -29,8 +30,16 @@ func (d deck) saveToFile(filename string) error {
 
 // Randomize the deck of cards.
 func (d deck) shuffle() {
+	/*
+		1.) Use time method to get a new int64 number and create the seed.
+		2.) Use rand.NewSource to generate a new source.
+		3.) Take the source to generate a new randomizer.
+	*/
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+
 	for i := range d {
-		newPosition := rand.Intn(len(d) - 1)
+		newPosition := r.Intn(len(d) - 1)
 
 		d[i], d[newPosition] = d[newPosition], d[i]
 	}
