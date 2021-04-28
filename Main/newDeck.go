@@ -40,11 +40,13 @@ func newDeckFromFile(filename string) deck {
 		tempDeck := newDeck()
 		err2 := tempDeck.saveToFile("My_deck")
 		if err2 != nil {
-			fmt.Println("Error: ", err)
+			fmt.Println("Error: ", err2)
 			os.Exit(1)
+		} else {
+			nd := newDeckFromFile(filename)
+			return nd
 		}
 	}
-
 	s := strings.Split(string(bs), ",")
 	return deck(s)
 }
