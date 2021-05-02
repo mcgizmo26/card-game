@@ -9,7 +9,8 @@ import (
 
 // Parameters 1st value 2nd type then comma. Go convention is that you use
 // a single letter to represent the "this" value. The 2nd set of parenthesis
-// is the return type. Go can return more than one value.
+// is the return type. Go can return more than one value. Slice range: low
+// bound [example:], high bound [:example]ß
 func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
